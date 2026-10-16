@@ -16,7 +16,8 @@ public class RecetteController : Controller
     // GET: RECETTES
     public async Task<IActionResult> Index()    
     {
-        return View(await _context.Recette.ToListAsync());
+        List<Recette> recettes = await _context.Recette.OrderBy(r => r.Categorie).ThenBy(r => r.Nom).ToListAsync();
+        return View(recettes);
     }
 
     // GET: RECETTES/Details/5
