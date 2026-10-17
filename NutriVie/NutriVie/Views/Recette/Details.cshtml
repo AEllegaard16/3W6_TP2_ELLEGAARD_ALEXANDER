@@ -17,6 +17,7 @@
             @Html.DisplayFor(model => model.Nom)
         </dd>
     </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -24,6 +25,7 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TempsPreparation)
         </dt>
@@ -31,6 +33,7 @@
             @Html.DisplayFor(model => model.TempsPreparation)
         </dd>
     </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TempsCuisson)
         </dt>
@@ -38,25 +41,20 @@
             @Html.DisplayFor(model => model.TempsCuisson)
         </dd>
     </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategorieId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategorieId)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
+    <dl class="row">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Categorie)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categorie)
+        <dd class="col-sm-10">
+            <p>@Model.Categorie.Nom</p>
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/images/@Model.Image"/>
         </dd>
     </dl>
 </div>

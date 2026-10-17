@@ -16,7 +16,7 @@ public class RecetteController : Controller
     // GET: RECETTES
     public async Task<IActionResult> Index()    
     {
-        List<Recette> recettes = await _context.Recette.OrderBy(r => r.Categorie).ThenBy(r => r.Nom).ToListAsync();
+        List<Recette> recettes = await _context.Recette.OrderBy(r => r.Categorie.Nom).ThenBy(r => r.Nom).ToListAsync();
         return View(recettes);
     }
 
@@ -51,7 +51,7 @@ public class RecetteController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,Nom,Description,TempsPreparation,TempsCuisson,Image,CategorieId,Categorie")] Recette recette)
     {
-        if (ModelState.IsValid) // catégorie toujours invalide?
+        if (ModelState.IsValid)
         {
             _context.Add(recette);
             await _context.SaveChangesAsync();

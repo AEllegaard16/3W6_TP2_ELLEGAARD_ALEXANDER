@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                <p>Durée(min)</p>
+                @Html.DisplayNameFor(model => model.TempsPreparation)
             </th>
             <th>
-                <p>Cuisson(min)</p>
+                @Html.DisplayNameFor(model => model.TempsCuisson)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
@@ -52,7 +52,7 @@
                     <img src="/images/@item.Image" width="150" />
             </td>
             <td>
-                @Html.DisplayFor(model => item.Categorie.Nom) @* problème ici, vérifier classe Recette (propriété de navigation à Catégorie) *@
+                @Html.DisplayFor(model => item.Categorie.Nom) @* problème résolu, la solution est le Lazy Loading! *@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
