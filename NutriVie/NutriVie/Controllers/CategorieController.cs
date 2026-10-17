@@ -16,7 +16,8 @@ public class CategorieController : Controller
     // GET: CATEGORIES
     public async Task<IActionResult> Index()    
     {
-        return View(await _context.Categorie.ToListAsync());
+        List<Categorie> categories = await _context.Categorie.OrderByDescending(c => c.Nom).ToListAsync();
+        return View(categories);
     }
 
     // GET: CATEGORIES/Details/5

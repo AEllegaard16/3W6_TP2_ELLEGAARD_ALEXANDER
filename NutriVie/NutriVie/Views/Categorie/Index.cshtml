@@ -1,4 +1,5 @@
 @model IEnumerable<NutriVie.Models.Categorie>
+@using System.Linq
 
 @{
     ViewData["Title"] = "Index";
@@ -28,7 +29,10 @@
                 @Html.DisplayFor(model => item.Nom)
             </td>
             <td>
-                @Html.DisplayFor(model => item.Recettes)
+                    @foreach (var recette in item.Recettes.OrderBy(r => r.Nom))
+                    {
+                        <a asp-controller="Recette" asp-action="Edit" asp-route-id="@recette.Id">@recette.Nom (@recette.TempsPreparation min) </a>
+                    }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
