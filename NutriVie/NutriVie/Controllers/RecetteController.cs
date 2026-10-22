@@ -144,7 +144,6 @@ public class RecetteController : Controller
         {
             _context.Recette.Remove(recette);
         }
-
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }

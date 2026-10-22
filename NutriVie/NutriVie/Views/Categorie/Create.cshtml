@@ -19,11 +19,11 @@
                 <span asp-validation-for="Nom" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Recettes" class="control-label"></label>
-                <input asp-for="Recettes" class="form-control" />
-                <span asp-validation-for="Recettes" class="text-danger"></span>
-            </div>
+            @if (TempData["Erreur"] != null)
+            {
+                <p class="text-danger">@TempData["Erreur"]</p>
+            }
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

@@ -12,6 +12,5 @@ namespace NutriVie.Models
 
         [ValidateNever]
         public virtual IList<Recette> Recettes { get; set; }
-
     }
 }

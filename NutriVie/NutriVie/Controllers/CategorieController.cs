@@ -49,10 +49,19 @@ public class CategorieController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Nom,Recettes")] Categorie categorie)
+    public async Task<IActionResult> Create([Bind("Id,Nom")] Categorie categorie)
     {
         if (ModelState.IsValid)
         {
+            foreach(Categorie autreCategorie in _context.Categorie)
+            {
+                if (categorie.Nom.ToLower() == autreCategorie.Nom.ToLower())
+                {
+                    TempData["Erreur"] = "Cette catégorie existe déjà";
+                    return View(categorie);
+                }
+            }
+
             _context.Add(categorie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -135,11 +144,15 @@ public class CategorieController : Controller
     public async Task<IActionResult> DeleteConfirmed(int? id)
     {
         var categorie = await _context.Categorie.FindAsync(id);
-        if (categorie != null)
+        if (categorie.Recettes.Count > 0)
+        {
+            TempData["Erreur"] = "Vous ne pouvez supprimer cette catégorie parce qu'elle contient des recettes";
+            return View(categorie);
+        }
+        else if (categorie != null)
         {
             _context.Categorie.Remove(categorie);
         }
-
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
