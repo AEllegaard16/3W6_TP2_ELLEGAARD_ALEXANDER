@@ -18,7 +18,7 @@ namespace NutriVie.Controllers
 
             new StatVM()
             {
-
+                RecettesAvec3Aliment = _context.Recette.Count(r => r.AlimentRecettes.Count() == 3)
             };
 
             return View();
