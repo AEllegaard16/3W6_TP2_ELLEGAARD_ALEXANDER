@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NutriVie.Models;
 using NutriVie.Models.Data;
@@ -41,6 +42,7 @@ public class RecetteController : Controller
     // GET: RECETTES/Create
     public IActionResult Create()
     {
+        ViewData["CategorieId"] = new SelectList(_context.Categorie, "Id", "Nom");
         return View();
     }
 
@@ -57,6 +59,7 @@ public class RecetteController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        ViewData["CategorieId"] = new SelectList(_context.Categorie, "Id", "Nom", recette.CategorieId);
         return View(recette);
     }
 
@@ -73,6 +76,7 @@ public class RecetteController : Controller
         {
             return NotFound();
         }
+        ViewData["CategorieId"] = new SelectList(_context.Categorie, "Id", "Nom", recette.CategorieId);
         return View(recette);
     }
 
@@ -108,6 +112,7 @@ public class RecetteController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
+        ViewData["CategorieId"] = new SelectList(_context.Categorie, "Id", "Nom", recette.CategorieId);
         return View(recette);
     }
 
