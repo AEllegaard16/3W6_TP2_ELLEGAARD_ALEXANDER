@@ -23,14 +23,9 @@
             {
                 <p class="text-danger">@TempData["Erreur"]</p>
             }
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="d-flex gap-3">
+                <partial name="_CreateBackToList" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
