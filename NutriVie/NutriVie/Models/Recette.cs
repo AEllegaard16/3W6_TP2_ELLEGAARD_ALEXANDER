@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using NutriVie.Models.Data;
 
 namespace NutriVie.Models
 {
@@ -22,5 +23,8 @@ namespace NutriVie.Models
 
         [ValidateNever]
         public virtual Categorie Categorie { get; set; }
+
+        [ValidateNever]
+        public virtual List<AlimentRecette> AlimentRecettes { get; set; }
     }
 }
