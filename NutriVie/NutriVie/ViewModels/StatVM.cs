@@ -10,6 +10,6 @@ namespace NutriVie.ViewModels
         public int RecettesAvec3Aliment { get; set; }
         public Aliment AlimentPlusCalorique { get; set; }
         public List<Recette> QuatreRecettesDureeTotalePlusCourte { get; set; }
-        public int NbCaloriesRecetteFrancaiseMoinsCalorique { get; set; }
+        public double NbCaloriesRecetteFrancaiseMoinsCalorique { get; set; }
     }
 }
