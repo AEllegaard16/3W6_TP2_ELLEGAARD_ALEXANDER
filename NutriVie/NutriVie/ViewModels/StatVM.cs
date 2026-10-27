@@ -1,5 +1,4 @@
 ﻿using NutriVie.Models;
-using NutriVie.Models.Data;
 
 namespace NutriVie.ViewModels
 {

@@ -1,9 +1,9 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NutriVie.Models;
 using NutriVie.Models.Data;
+using NutriVie.ViewModels;
 
 public class RecetteController : Controller
 {
@@ -151,5 +151,35 @@ public class RecetteController : Controller
     private bool RecetteExists(int? id)
     {
         return _context.Recette.Any(e => e.Id == id);
+    }
+
+    public IActionResult Accordeon()
+    {
+
+        List<RecetteCategorieVM> listeRecetteCategorieVM = new();
+        foreach (var categorie in _context.Categorie)
+        {
+            RecetteCategorieVM recetteCategorieVM = new()
+            {
+                Nom = categorie.Nom
+            };
+            
+            foreach (var recette in categorie.Recettes)
+            {
+
+                RecetteInfoVM recetteInfoVM = new()
+                {
+                    NbIngredients = 0,
+                    NomRecette = "",
+                    Statut = "",
+                    TempsTotal = 0
+                };
+
+                recetteCategorieVM.ListRecetteVM.Add(recetteInfoVM);
+            }
+
+            listeRecetteCategorieVM.Add(recetteCategorieVM);
+        }
+        return View(listeRecetteCategorieVM);
     }
 }
