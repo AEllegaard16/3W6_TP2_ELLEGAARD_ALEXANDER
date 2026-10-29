@@ -161,7 +161,8 @@ public class RecetteController : Controller
         {
             RecetteCategorieVM recetteCategorieVM = new()
             {
-                Nom = categorie.Nom
+                Nom = categorie.Nom,
+                ListRecetteVM = new List<RecetteInfoVM>()
             };
             
             foreach (var recette in categorie.Recettes)
@@ -169,10 +170,9 @@ public class RecetteController : Controller
 
                 RecetteInfoVM recetteInfoVM = new()
                 {
-                    NbIngredients = 0,
-                    NomRecette = "",
-                    Statut = "",
-                    TempsTotal = 0
+                    NbIngredients = recette.AlimentRecettes.Count(),
+                    NomRecette = recette.Nom,
+                    TempsTotal = recette.TempsCuisson + recette.TempsPreparation
                 };
 
                 recetteCategorieVM.ListRecetteVM.Add(recetteInfoVM);
@@ -180,6 +180,8 @@ public class RecetteController : Controller
 
             listeRecetteCategorieVM.Add(recetteCategorieVM);
         }
+
+
         return View(listeRecetteCategorieVM);
     }
 }

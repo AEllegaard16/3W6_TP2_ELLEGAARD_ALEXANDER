@@ -9,7 +9,7 @@
 <p>Le nombre de recettes avec 3 aliments : <strong>@Model.RecettesAvec3Aliment</strong></p>
 <p>L'aliment le plus calorique : <strong>@Model.AlimentPlusCalorique.Nom</strong></p>
 
-<h2>La liste des 4 recettes qui ont le plus court temps total (préparation et cuisson) en affichant le nom et le temps total</h2>
+<h3>La liste des 4 recettes qui ont le plus court temps total (préparation et cuisson) en affichant le nom et le temps total</h3>
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +29,7 @@
                     @item.Nom
                 </td>
                 <td>
-                    <strong>@(item.TempsCuisson + item.TempsPreparation)</strong>
+                    @(item.TempsCuisson + item.TempsPreparation)
                 </td>
             </tr>
         }

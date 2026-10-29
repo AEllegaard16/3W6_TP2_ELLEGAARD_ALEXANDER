@@ -10,7 +10,16 @@
     <td>
         @Model.TempsTotal
     </td>
-    <td>
-        @Model.Statut
-    </td>
+    @if (Model.TempsTotal < 50)
+    {
+        <td class="text-success">Recette de courte durée</td>
+    } 
+    else if (Model.TempsTotal > 50 && Model.TempsTotal < 90)
+    {
+        <td class="text-warning">Recette de durée moyenne</td>
+    }
+    else
+    {
+        <td class="text-danger">Recette de longue durée</td>
+    }
 </tr>
